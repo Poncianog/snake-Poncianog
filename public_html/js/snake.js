@@ -30,11 +30,23 @@ function gameDraw() {
 }
 
 function snakeInitialize() {
+    snake = [];
+    snakeLenght = 2;
+    snaleSize = 20;
     
+    for(var index = 0; index < snakeLength; index++) {
+        snake.push( {
+            x: index,
+            y: 0
+        });
+    }
 }
 
 function snakeDraw() {
-    
+    for(var index = 0; index < snake.length; index++) {
+        context.fillStyle = "white";
+        context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize);
+    }
 }
 
 function snakeUpdate(){
