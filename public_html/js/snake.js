@@ -84,7 +84,7 @@ function snakeInitialize() {
 
 function snakeDraw() {
     for (var index = 0; index < snake.length; index++) {
-        context.fillStyle = "white";
+        context.fillStyle = "black";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
@@ -129,7 +129,7 @@ function foodInitialize() {
 }
 
 function foodDraw() {
-    context.fillStyle = "white";
+    context.fillStyle = "black";
     context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
 }
 
@@ -184,6 +184,9 @@ function checkFoodCollisions(snakeHeadX, snakeHeadY) {
 
 function checkWallCollisions(snakeHeadX, snakeHeadY) {
     if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
+        setState("GAME OVER")
+    }
+    if (snakeHeadY * snakeSize >= screenHeight || snakeHeadY * snakeSize < 0) {
         setState("GAME OVER")
     }
 }

@@ -11,3 +11,9 @@ body {
     position: absolute;
     visibility: hidden;
 }
+
+h1, h3 {
+    font-family: 'Faster One', cursive;
+    color: black;
+    text-align: center;
+}
