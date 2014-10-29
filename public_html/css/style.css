@@ -17,3 +17,18 @@ h1, h3 {
     color: black;
     text-align: center;
 }
+
+.title {
+    font-size: 105px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#restartButton {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#restartButton:hover {
+    background-color: white;
+}
