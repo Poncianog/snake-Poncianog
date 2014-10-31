@@ -17,6 +17,8 @@ var screenHeight;
 var gameState;
 var gameOverMenu;
 var restartButton;
+var playHUD;
+var scoreboard;
 
 
 /* ---------------------------------------------------------------------------
@@ -51,12 +53,16 @@ function gameInitialize() {
     
     restartButton = document.getElementById("restartButton");
     restartButton.addEventListener("click", gameRestart);
+    
+    playHUD = document.getElementById("playHUD");
+    scoreboard = document.getElementById("scoreboard");
 
     setState("PLAY");
 }
 
 function gameLoop() {
     gameDraw();
+    drawScoreboard();
     if (gameState == "PLAY") {
         snakeUpdate();
         snakeDraw();
@@ -121,6 +127,7 @@ function snakeUpdate() {
 
     checkFoodCollisions(snakeHeadX, snakeHeadY);
     checkWallCollisions(snakeHeadX, snakeHeadY);
+    checkSnakeCollisions(snakeHeadX, snakeHeadY);
 
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -204,6 +211,15 @@ function checkWallCollisions(snakeHeadX, snakeHeadY) {
     }
 }
 
+function checkSnakeCollisions(snakeHeadX, snakeHeadY) {
+    for(var index = 1; index < snake.length; index++) {
+        if(snakeHeadX == snake[index].x && snakeHeadY == snake[index].y) {
+            setState("GAME OVER");
+            return;
+        }
+    }
+}
+
 /* ---------------------------------------------------------------------------
  * Game State Handling
  * ---------------------------------------------------------------------------
@@ -231,9 +247,16 @@ function showMenu(state) {
     if (state == "GAME OVER") {
         displayMenu(gameOverMenu);
     }
+    else if(state == "PLAY") {
+        displayMenu(playHUD);
+    }
 }
 
 function centerMenuPosition(menu) {
     menu.style.top = (screenHeight / 2) - (menu.offsetHeight / 2) + "px";
     menu.style.left = (screenWidth / 2) - (menu.offsetWidth / 2) + "px";
+}
+
+function drawScoreboard() {
+    scoreboard.innerHTML = "Length: " + snakeLength;
 }

@@ -13,7 +13,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Faster One', cursive;
+    font-family: 'Ewert', cursive;
     color: black;
     text-align: center;
 }
@@ -31,4 +31,8 @@ h1, h2, h3 {
 
 #restartButton:hover {
     background-color: white;
+}
+
+#scoreboard {
+    margin: 0px;
 }
